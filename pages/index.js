@@ -63,11 +63,13 @@ export default function Home() {
     })
       .then((response) => {
         console.log(response);
+
         return response.json();
       })
       .catch((err) => {
         console.log(err);
       });
+    location.href = "/";
   };
 
   return (
@@ -103,6 +105,7 @@ export default function Home() {
               />
 
               <label>Post Date</label>
+              {/*Hi  */}
               <input onChange={handleChange} type="date" name="postDate" />
 
               <label>Exam date</label>
