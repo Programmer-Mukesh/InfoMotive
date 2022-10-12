@@ -1,6 +1,7 @@
 import "../styles/globals.css";
 import "../styles/Header.scss";
 import "../styles/Home.scss";
+import "../styles/AdminForm.scss";
 import Layout from "../components/layout";
 
 function MyApp({ Component, pageProps }) {
