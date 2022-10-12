@@ -1,6 +1,6 @@
 import { Container, Grid, Paper } from "@mui/material";
 import Head from "next/head";
-
+import Link from "next/link";
 export default function Home() {
   return (
     <Container className="homeContainer">
@@ -29,6 +29,52 @@ export default function Home() {
           </Paper>
           <Paper elevation={3} className="homeBox">
             <span>Freelancing</span>
+          </Paper>
+        </div>
+        <div className="boxesWrapper">
+          <Paper elevation={3} className="homeBox">
+            <ul>
+              <li>SSC cgl</li>
+              <li>SEBI</li>
+              <li>RBI Grade-B</li>
+              <li>SBI PO</li>
+              <li>SBI Clerk</li>
+              <li>IBPS</li>
+              <Link href="">see more</Link>
+            </ul>
+          </Paper>
+          <Paper elevation={3} className="homeBox">
+            <ul>
+              <li>Amazon</li>
+              <li>Microsoft</li>
+              <li>Walmart</li>
+              <li>TCS</li>
+              <li>Infosys</li>
+              <li>L&T</li>
+              <Link href="">see more</Link>
+            </ul>
+          </Paper>
+          <Paper elevation={3} className="homeBox">
+            <ul>
+              <li>Amazon</li>
+              <li>DRDO</li>
+              <li>Walmart</li>
+              <li>Microsoft</li>
+              <li>Google</li>
+              <li>L&T</li>
+              <Link href="">see more</Link>
+            </ul>
+          </Paper>
+          <Paper elevation={3} className="homeBox">
+            <ul>
+              <li>Content Writer</li>
+              <li>Grapic Design</li>
+              <li>Video Editing</li>
+              <li>Website Development</li>
+              <li>Social media</li>
+              <li>Assistant</li>
+              <Link href="">see more</Link>
+            </ul>
           </Paper>
         </div>
       </main>

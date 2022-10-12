@@ -11,11 +11,26 @@
       //   border: 1px solid #fbac1b !important;
       text-align: center;
       padding: 20px;
-      height: 80px;
       margin: 10px;
       span {
         font-size: 21px;
         font-weight: 700;
+      }
+      ul {
+        padding-left: 0px;
+      }
+      li {
+        text-decoration: none;
+        list-style-type: none;
+        padding: 5px 0px;
+        cursor: pointer;
+      }
+      a {
+        color: rgb(59, 153, 236);
+        font-style: italic;
+        &::before {
+          content: "...";
+        }
       }
     }
   }
