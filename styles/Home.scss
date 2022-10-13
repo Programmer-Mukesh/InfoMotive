@@ -19,17 +19,13 @@
       ul {
         padding-left: 0px;
       }
-      li {
-        text-decoration: none;
-        list-style-type: none;
-        padding: 5px 0px;
-        cursor: pointer;
-      }
       a {
-        color: rgb(59, 153, 236);
-        font-style: italic;
-        &::before {
-          content: "...";
+        display: block;
+        padding: 5px 0px;
+        color: rgb(5, 24, 193);
+        &:hover,
+        &:focus {
+          font-weight: 600;
         }
       }
     }
