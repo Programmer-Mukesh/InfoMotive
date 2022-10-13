@@ -1,7 +1,31 @@
 import { Container, Grid, Paper } from "@mui/material";
 import Head from "next/head";
-import Link from "next/link";
+import { useState, useEffect } from "react";
+import axios from "axios";
+import JobCards from "../components/JobCards";
+
 export default function Home() {
+  const [governmentData, setGovernmentData] = useState([]);
+
+  const API_GOVERNMENT = "https://jobsall.herokuapp.com/api/govt/getAlljob";
+
+  const fetchGovernanceData = async () => {
+    const response = await axios.get(API_GOVERNMENT);
+    setGovernmentData(response.data.data);
+  };
+
+  useEffect(() => {
+    fetchGovernanceData();
+  }, []);
+
+  const dummyData = [
+    { id: 1, postName: "Amazon" },
+    { id: 2, postName: "Microsoft" },
+    { id: 3, postName: "Walmart" },
+    { id: 4, postName: "Google" },
+    { id: 1, postName: "Apple" },
+  ];
+
   return (
     <Container className="homeContainer">
       <Head>
@@ -20,22 +44,22 @@ export default function Home() {
         <div className="boxesWrapper">
           <Grid container>
             <Grid item xs={12} sm={6} lg={3}>
-              <Paper elevation={3} className="homeBox">
+              <Paper elevation={3} className="homeCategoryBox">
                 <span>Government</span>
               </Paper>
             </Grid>
             <Grid item xs={12} sm={6} lg={3}>
-              <Paper elevation={3} className="homeBox">
+              <Paper elevation={3} className="homeCategoryBox">
                 <span>Private</span>
               </Paper>
             </Grid>
             <Grid item xs={12} sm={6} lg={3}>
-              <Paper elevation={3} className="homeBox">
+              <Paper elevation={3} className="homeCategoryBox">
                 <span>Interships</span>
               </Paper>
             </Grid>
             <Grid item xs={12} sm={6} lg={3}>
-              <Paper elevation={3} className="homeBox">
+              <Paper elevation={3} className="homeCategoryBox">
                 <span>Freelancing</span>
               </Paper>
             </Grid>
@@ -43,94 +67,10 @@ export default function Home() {
         </div>
         <div className="boxesWrapper">
           <Grid container>
-            <Grid item xs={12} sm={6} lg={3}>
-              <Paper elevation={3} className="homeBox">
-                <Link href="/post/government/ssc">
-                  <a>SSC cgl</a>
-                </Link>
-                <Link href="/post/government/sebi">
-                  <a>SEBI</a>
-                </Link>
-                <Link href="/post/government/rbi">
-                  <a>RBI Grade-B</a>
-                </Link>
-                <Link href="/post/government/sbi">
-                  <a>SBI</a>
-                </Link>
-                <Link href="/post/government/nabard">
-                  <a>NABARD</a>
-                </Link>
-                <Link href="/post/government/ibps">
-                  <a>IBPS</a>
-                </Link>
-              </Paper>
-            </Grid>
-            <Grid item xs={12} sm={6} lg={3}>
-              <Paper elevation={3} className="homeBox">
-                <Link href="/post/private/amazon">
-                  <a>Amazon</a>
-                </Link>
-                <Link href="/post/private/microsoft">
-                  <a>Microsoft</a>
-                </Link>
-                <Link href="/post/private/walmart">
-                  <a>Walmart</a>
-                </Link>
-                <Link href="/post/private/tcs">
-                  <a>TCS</a>
-                </Link>
-                <Link href="/post/private/infosys">
-                  <a>Infosys</a>
-                </Link>
-                <Link href="/post/private/l&t">
-                  <a>L&T</a>
-                </Link>
-              </Paper>
-            </Grid>
-            <Grid item xs={12} sm={6} lg={3}>
-              <Paper elevation={3} className="homeBox">
-                <Link href="/post/internship/amazon">
-                  <a>Amazon</a>
-                </Link>
-                <Link href="/post/internship/drdo">
-                  <a>DRDO</a>
-                </Link>
-                <Link href="/post/internship/walmart">
-                  <a>Walmart</a>
-                </Link>
-                <Link href="/post/internship/microsoft">
-                  <a>Microsoft</a>
-                </Link>
-                <Link href="/post/internship/google">
-                  <a>Google</a>
-                </Link>
-                <Link href="/post/internship/l&t">
-                  <a>L&T</a>
-                </Link>
-              </Paper>
-            </Grid>
-            <Grid item xs={12} sm={6} lg={3}>
-              <Paper elevation={3} className="homeBox">
-                <Link href="/post/freelancing/content-writer">
-                  <a>Content Writer</a>
-                </Link>
-                <Link href="/post/freelancing/graphic-design">
-                  <a>Grapic Design</a>
-                </Link>
-                <Link href="/post/freelancing/video-editing">
-                  <a>Video Editing</a>
-                </Link>
-                <Link href="/post/freelancing/web-developer">
-                  <a>Website Development</a>
-                </Link>
-                <Link href="/post/freelancing/social-media-marketing">
-                  <a>Social media</a>
-                </Link>
-                <Link href="/post/freelancing/assistant">
-                  <a>Assistant</a>
-                </Link>
-              </Paper>
-            </Grid>
+            <JobCards title="Government Jobs" allPosts={governmentData} />
+            <JobCards title="Private Jobs" allPosts={dummyData} />
+            <JobCards title="Internship Jobs" allPosts={dummyData} />
+            <JobCards title="Freelancing Jobs" allPosts={dummyData} />
           </Grid>
         </div>
       </main>
