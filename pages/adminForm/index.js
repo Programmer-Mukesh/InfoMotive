@@ -309,14 +309,25 @@ export default function Home() {
                 </div>
               </>
             )}
+            {formState !== "government" && (
+              <div className="flexRow">
+                <label>CTC</label>
+                <input
+                  onChange={handleChange}
+                  placeholder="Enter CTC"
+                  name="ctc"
+                />
+                <label>Hourly Pay</label>
+                <input
+                  onChange={handleChange}
+                  placeholder="Enter Hourly Pay"
+                  name="hourlyPay"
+                />
+              </div>
+            )}
             <br />
             <div className="alignBtnCenter">
-              <input
-                className="btnOrange"
-                onChange={handleChange}
-                type="submit"
-                placeholder="submit"
-              />
+              <input className="btnOrange" type="submit" placeholder="submit" />
             </div>
           </form>
         </Paper>
