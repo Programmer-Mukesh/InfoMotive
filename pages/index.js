@@ -1,28 +1,15 @@
 import { Container, Grid, Paper } from "@mui/material";
 import Head from "next/head";
-import { useState, useEffect } from "react";
-import axios from "axios";
+import { useState, useContext } from "react";
 import JobCards from "../components/JobCards";
 import { useRouter } from "next/router";
+import { PostContext } from "../context/PostContext";
 
 export default function Home() {
-  const [governmentData, setGovernmentData] = useState([]);
-  const [loading, setLoading] = useState(true);
+  const { governmentData, loading } = useContext(PostContext);
   const router = useRouter();
-  const API_GOVERNMENT = "https://jobsall.herokuapp.com/api/govt/getAlljob";
 
-  const fetchGovernanceData = async () => {
-    console.log("Fetching", loading);
-    const response = await axios.get(API_GOVERNMENT);
-    const firstFiveResponses = response.data.data.slice(0, 5);
-    setGovernmentData(firstFiveResponses);
-    setLoading(false);
-  };
-
-  useEffect(() => {
-    fetchGovernanceData();
-    console.log("Fetching after", loading);
-  }, []);
+  const firstFiveGovPosts = governmentData.slice(0, 5);
 
   const dummyData = [
     { id: 1, postName: "Amazon" },
@@ -79,7 +66,10 @@ export default function Home() {
           <div className="jobCardContainer">
             <Grid container className="boxesWrapper">
               <Grid item xs={12} sm={6} lg={3}>
-                <JobCards title="Government Jobs" allPosts={governmentData} />
+                <JobCards
+                  title="Government Jobs"
+                  allPosts={firstFiveGovPosts}
+                />
               </Grid>
               <Grid item xs={12} sm={6} lg={3}>
                 <JobCards title="Private Jobs" allPosts={dummyData} />

@@ -4,6 +4,7 @@ import { useState } from "react";
 
 export default function Home() {
   const [input, setInput] = useState({});
+  const [formState, setFormState] = useState("government");
 
   const handleChange = (event) => {
     const objKey = event.target.name;
@@ -70,6 +71,10 @@ export default function Home() {
       });
   };
 
+  const handleFormToShow = (e) => {
+    setFormState(e.target.value);
+  };
+  console.log("first", formState);
   return (
     <Container className="AdminFormContainer">
       <Head>
@@ -86,10 +91,15 @@ export default function Home() {
           <p>
             Welcome! Get updates to all the jobs and result notification here
           </p>
-          <select id="jobType" className="selectJobType">
+          <select
+            id="jobType"
+            className="selectJobType"
+            onChange={handleFormToShow}
+          >
             <option value="government">Government</option>
-            <option value="Private">Private</option>
-            <option value="interships">Interships</option>
+            <option value="private">Private</option>
+            <option value="intership">Intership</option>
+            <option value="freelancing">Freelancing</option>
           </select>
         </div>
         <Paper className="form" elevation={1}>
@@ -103,11 +113,11 @@ export default function Home() {
               />
 
               <label>Post Date</label>
-              {/*Hi  */}
               <input onChange={handleChange} type="date" name="postDate" />
 
               <label>Exam date</label>
               <input onChange={handleChange} type="date" name="examDate" />
+
               <label>Last Date</label>
               <input onChange={handleChange} type="date" name="lastDate" />
             </div>
@@ -186,87 +196,119 @@ export default function Home() {
                 name="shortInfo"
                 onChange={handleChange}
               />
-            </div>
+              <label>Position Description</label>
 
-            <div className="">
-              <label>Enter Fee for all categories</label>
-              <input
+              <textarea
+                placeholder="Enter Position Description"
+                rows="4"
+                cols="50"
+                name="postDescription"
                 onChange={handleChange}
-                placeholder="General Fees"
-                name="generalFee"
-              />
-              <input
-                onChange={handleChange}
-                placeholder="OBC Fees"
-                name="obcFee"
-              />
-              <input
-                onChange={handleChange}
-                placeholder="SC Fees"
-                name="scFee"
-              />
-              <input
-                onChange={handleChange}
-                placeholder="ST Fees"
-                name="stFee"
-              />
-              <input
-                onChange={handleChange}
-                placeholder="Female Fees"
-                name="femaleFee"
               />
             </div>
             <div className="flexRow">
-              <label>Age Details</label>
-              <input
+              <label>Key Skills</label>
+
+              <textarea
+                placeholder="Enter Key Skills"
+                rows="4"
+                cols="50"
+                name="skills"
                 onChange={handleChange}
-                placeholder="Enter min age"
-                name="minAge"
               />
-              <input
+              <label>Eligibility Criteria</label>
+
+              <textarea
+                placeholder="Enter Eligibility/Apply Criteria"
+                rows="4"
+                cols="50"
+                name="applyCriteria"
                 onChange={handleChange}
-                placeholder="Enter max age"
-                name="maxAge"
-              />
-            </div>
-            <div className="">
-              <label>Categories wise posts</label>
-              <input
-                onChange={handleChange}
-                placeholder="UR Posts"
-                name="URPosts"
-              />
-              <input
-                onChange={handleChange}
-                placeholder="BC Posts"
-                name="BCPosts"
-              />
-              <input
-                onChange={handleChange}
-                placeholder="MBC Posts"
-                name="MBCPosts"
-              />
-              <input
-                onChange={handleChange}
-                placeholder="EWS Posts"
-                name="EWSPosts"
-              />
-              <input
-                onChange={handleChange}
-                placeholder="SC Posts"
-                name="SCPosts"
-              />
-              <input
-                onChange={handleChange}
-                placeholder="ST Posts"
-                name="STPosts"
-              />
-              <input
-                onChange={handleChange}
-                placeholder="Total Posts"
-                name="totalPosts"
               />
             </div>
+            {formState === "government" && (
+              <>
+                <div className="">
+                  <label>Enter Fee for all categories</label>
+                  <input
+                    onChange={handleChange}
+                    placeholder="General Fees"
+                    name="generalFee"
+                  />
+                  <input
+                    onChange={handleChange}
+                    placeholder="OBC Fees"
+                    name="obcFee"
+                  />
+                  <input
+                    onChange={handleChange}
+                    placeholder="SC Fees"
+                    name="scFee"
+                  />
+                  <input
+                    onChange={handleChange}
+                    placeholder="ST Fees"
+                    name="stFee"
+                  />
+                  <input
+                    onChange={handleChange}
+                    placeholder="Female Fees"
+                    name="femaleFee"
+                  />
+                </div>
+                <div className="flexRow">
+                  <label>Age Details</label>
+                  <input
+                    onChange={handleChange}
+                    placeholder="Enter min age"
+                    name="minAge"
+                  />
+                  <input
+                    onChange={handleChange}
+                    placeholder="Enter max age"
+                    name="maxAge"
+                  />
+                </div>
+                <div className="">
+                  <label>Categories wise posts</label>
+                  <input
+                    onChange={handleChange}
+                    placeholder="UR Posts"
+                    name="URPosts"
+                  />
+                  <input
+                    onChange={handleChange}
+                    placeholder="BC Posts"
+                    name="BCPosts"
+                  />
+                  <input
+                    onChange={handleChange}
+                    placeholder="MBC Posts"
+                    name="MBCPosts"
+                  />
+                  <input
+                    onChange={handleChange}
+                    placeholder="EWS Posts"
+                    name="EWSPosts"
+                  />
+                  <input
+                    onChange={handleChange}
+                    placeholder="SC Posts"
+                    name="SCPosts"
+                  />
+                  <input
+                    onChange={handleChange}
+                    placeholder="ST Posts"
+                    name="STPosts"
+                  />
+                  <input
+                    onChange={handleChange}
+                    placeholder="Total Posts"
+                    name="totalPosts"
+                  />
+                </div>
+              </>
+            )}
             <br />
             <div className="alignBtnCenter">
               <input

@@ -1,22 +1,10 @@
-import React, { useEffect, useState } from "react";
+import React, { useContext, useState } from "react";
 import { Container, Grid, Paper } from "@mui/material";
 import JobCards from "../../../components/JobCards";
-import axios from "axios";
+import { PostContext } from "../../../context/PostContext";
 
 const index = () => {
-  const [governmentData, setGovernmentData] = useState([]);
-  const [loading, setLoading] = useState(true);
-  const API_GOVERNMENT = "https://jobsall.herokuapp.com/api/govt/getAlljob";
-
-  const fetchGovernanceData = async () => {
-    const response = await axios.get(API_GOVERNMENT);
-    setGovernmentData(response.data.data);
-    setLoading(false);
-  };
-
-  useEffect(() => {
-    fetchGovernanceData();
-  }, []);
+  const { governmentData, loading } = useContext(PostContext);
 
   return (
     <Container className="">
