@@ -14,6 +14,7 @@ export default function Home() {
   };
 
   const handleSubmit = (e) => {
+    console.log("input values console-->", input);
     e.preventDefault();
 
     let data = {
