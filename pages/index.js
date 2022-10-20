@@ -69,16 +69,29 @@ export default function Home() {
                 <JobCards
                   title="Government Jobs"
                   allPosts={firstFiveGovPosts}
+                  btnRoute="/post/government"
                 />
               </Grid>
               <Grid item xs={12} sm={6} lg={3}>
-                <JobCards title="Private Jobs" allPosts={dummyData} />
+                <JobCards
+                  title="Private Jobs"
+                  allPosts={dummyData}
+                  btnRoute="/post/private"
+                />
               </Grid>
               <Grid item xs={12} sm={6} lg={3}>
-                <JobCards title="Internship Jobs" allPosts={dummyData} />
+                <JobCards
+                  title="Internship Jobs"
+                  allPosts={dummyData}
+                  btnRoute="/post/intership"
+                />
               </Grid>
               <Grid item xs={12} sm={6} lg={3}>
-                <JobCards title="Freelancing Jobs" allPosts={dummyData} />
+                <JobCards
+                  title="Freelancing Jobs"
+                  allPosts={dummyData}
+                  btnRoute="/post/freelancing"
+                />
               </Grid>
             </Grid>
           </div>

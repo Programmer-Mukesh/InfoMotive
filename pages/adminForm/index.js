@@ -1,6 +1,7 @@
 import { Container, Grid, Paper } from "@mui/material";
 import Head from "next/head";
 import { useState } from "react";
+import { callPostAPIs } from "../../helper/helper";
 
 export default function Home() {
   const [input, setInput] = useState({});
@@ -17,52 +18,25 @@ export default function Home() {
     console.log("input values console-->", input);
     e.preventDefault();
 
-    let data = {
-      Fee: {
-        general: input?.generalFee,
-        OBC: input?.obcFee,
-        SC: input?.scFee,
-        ST: input?.stFee,
-        female: input?.femaleFee,
-      },
-      age: {
-        min: input?.minAge,
-        max: input?.maxAge,
-      },
-      totalPostCatWise: {
-        UR: input?.URPosts,
-        BC: input?.BCPosts,
-        MBC: input?.MBCPosts,
-        EWS: input?.EWSPosts,
-        SC: input?.SCPosts,
-        ST: input?.STPosts,
-        total: input?.totalPosts,
-      },
-      dispHeading: input?.dispHeading,
-      descriptionURL: input?.descriptionURL,
-      postName: input?.postName,
-      postDate: input?.postDate,
-      examDate: input?.examDate,
-      lastDate: input?.lastDate,
-      shortInfo: input?.shortInfo,
-      admitCardAvlbl: input?.admitCardAvlbl,
-      postNameShortDtl: input?.postNameShortDtl,
-      totalPost: input?.totalPost,
-      eligibility: input?.eligibility,
-      applyLink: input?.applyLink,
-      notificationLink: input?.notificationLink,
-      officialWebsiteLink: input?.officialWebsiteLink,
+    const data = callPostAPIs(input, formState);
+
+    const callApiFor = {
+      government: "govt",
+      private: "pvt",
     };
 
-    fetch("https://jobsall.herokuapp.com/api/govt/postjob", {
-      method: "POST",
-      body: JSON.stringify(data),
-      headers: {
-        Accept: "application/json",
-        "Content-Type": "application/json",
-        Cache: "no-cache",
-      },
-    })
+    fetch(
+      `https://jobsall.herokuapp.com/api/${callApiFor[formState]}/postjob`,
+      {
+        method: "POST",
+        body: JSON.stringify(data),
+        headers: {
+          Accept: "application/json",
+          "Content-Type": "application/json",
+          Cache: "no-cache",
+        },
+      }
+    )
       .then((response) => {
         console.log(response);
         return response.json();

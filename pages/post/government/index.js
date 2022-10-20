@@ -2,12 +2,19 @@ import React, { useContext, useState } from "react";
 import { Container, Grid, Paper } from "@mui/material";
 import JobCards from "../../../components/JobCards";
 import { PostContext } from "../../../context/PostContext";
+import Head from "next/head";
 
 const index = () => {
   const { governmentData, loading } = useContext(PostContext);
 
   return (
     <Container className="">
+      <Head>
+        <title>InfoMotive | All Government Posts</title>
+        <meta name="description" content="All Government Posts listing" />
+        <link rel="icon" href="/favicon.ico" />
+      </Head>
+
       {loading ? (
         <h3>Loading...</h3>
       ) : (
@@ -19,6 +26,7 @@ const index = () => {
                 <JobCards
                   title="All Government Jobs"
                   allPosts={governmentData}
+                  btnRoute="/post/government"
                 />
               </Grid>
             </Grid>
