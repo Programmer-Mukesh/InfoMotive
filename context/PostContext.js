@@ -9,10 +9,14 @@ const Context = ({ children }) => {
   const [loading, setLoading] = useState(true);
 
   const fetchGovernanceData = async () => {
-    const response = await axios.get(API_GET_GOVERNMENT_POSTS);
-    const allGovPosts = response.data.data;
-    setGovernmentData(allGovPosts);
-    setLoading(false);
+    try {
+      const response = await axios.get(API_GET_GOVERNMENT_POSTS);
+      const allGovPosts = response.data.data;
+      setGovernmentData(allGovPosts);
+      setLoading(false);
+    } catch (err) {
+      alert(err);
+    }
   };
 
   useEffect(() => {

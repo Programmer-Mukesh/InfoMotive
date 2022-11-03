@@ -55,6 +55,7 @@ export const callPostAPIs = (input, formState) => {
     postDescription: input?.postDescription,
     skills: input?.skills,
     applyCriteria: input?.applyCriteria,
+    location: input?.location,
   };
 
   if (formState !== "government") {

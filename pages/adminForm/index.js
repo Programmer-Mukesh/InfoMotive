@@ -1,4 +1,5 @@
 import { Container, Grid, Paper } from "@mui/material";
+import axios from "axios";
 import Head from "next/head";
 import { useState } from "react";
 import { callPostAPIs } from "../../helper/helper";
@@ -14,7 +15,7 @@ export default function Home() {
     setInput({ ...input, [objKey]: objValue });
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     console.log("input values console-->", input);
     e.preventDefault();
 
@@ -25,25 +26,27 @@ export default function Home() {
       private: "pvt",
     };
 
-    fetch(
-      `https://jobsall.herokuapp.com/api/${callApiFor[formState]}/postjob`,
-      {
-        method: "POST",
-        body: JSON.stringify(data),
-        headers: {
-          Accept: "application/json",
-          "Content-Type": "application/json",
-          Cache: "no-cache",
-        },
+    try {
+      const response = await axios(
+        `https://jobsall.herokuapp.com/api/${callApiFor[formState]}/postjob`,
+        {
+          method: "POST",
+          body: JSON.stringify(data),
+          headers: {
+            Accept: "application/json",
+            "Content-Type": "application/json",
+            Cache: "no-cache",
+          },
+        }
+      );
+      console.log("response", response);
+      if (response.data.status === "success") {
+        alert("Data Posted Successfully");
       }
-    )
-      .then((response) => {
-        console.log(response);
-        return response.json();
-      })
-      .catch((err) => {
-        console.log(err);
-      });
+    } catch (error) {
+      console.log("Error: ", error.message);
+      alert("Error: " + error.message);
+    }
   };
 
   const handleFormToShow = (e) => {
@@ -297,6 +300,12 @@ export default function Home() {
                   onChange={handleChange}
                   placeholder="Enter Hourly Pay"
                   name="hourlyPay"
+                />
+                <label>Location</label>
+                <input
+                  onChange={handleChange}
+                  placeholder="Enter Locations"
+                  name="location"
                 />
               </div>
             )}
