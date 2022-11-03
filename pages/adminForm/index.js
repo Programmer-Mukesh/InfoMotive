@@ -26,26 +26,23 @@ export default function Home() {
       private: "pvt",
     };
 
-    try {
-      const response = await axios(
-        `https://jobsall.herokuapp.com/api/${callApiFor[formState]}/postjob`,
-        {
-          method: "POST",
-          body: JSON.stringify(data),
-          headers: {
-            Accept: "application/json",
-            "Content-Type": "application/json",
-            Cache: "no-cache",
-          },
-        }
-      );
-      console.log("response", response);
-      if (response.data.status === "success") {
-        alert("Data Posted Successfully");
+    const response = await fetch(
+      `https://jobsall.herokuapp.com/api/${callApiFor[formState]}/postjob`,
+      {
+        method: "POST",
+        body: JSON.stringify(data),
+        headers: {
+          Accept: "application/json",
+          "Content-Type": "application/json",
+          Cache: "no-cache",
+        },
       }
-    } catch (error) {
-      console.log("Error: ", error.message);
-      alert("Error: " + error.message);
+    );
+    console.log("response", response);
+    if (response.ok) {
+      alert("Data Posted Successfully");
+    } else if (!response.ok) {
+      alert("Error occured Api status :" + response.status);
     }
   };
 
