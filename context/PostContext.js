@@ -1,12 +1,16 @@
 import axios from "axios";
 import React, { useState, useEffect } from "react";
-import { API_GET_GOVERNMENT_POSTS } from "../service/api";
+import {
+  API_GET_GOVERNMENT_POSTS,
+  API_GET_PRIVATE_POSTS,
+} from "../service/api";
 
 export const PostContext = React.createContext();
 
 const Context = ({ children }) => {
   const [governmentData, setGovernmentData] = useState([]);
   const [loading, setLoading] = useState(true);
+  const [privateData, setPrivateData] = useState([]);
 
   const fetchGovernanceData = async () => {
     try {
@@ -18,9 +22,20 @@ const Context = ({ children }) => {
       alert(err);
     }
   };
+  const fetchPrivateData = async () => {
+    try {
+      const response = await axios.get(API_GET_PRIVATE_POSTS);
+      const allPvtPosts = response.data.data;
+      setPrivateData(allPvtPosts);
+      setLoading(false);
+    } catch (err) {
+      alert(err);
+    }
+  };
 
   useEffect(() => {
     fetchGovernanceData();
+    fetchPrivateData();
   }, []);
 
   return (
@@ -28,6 +43,7 @@ const Context = ({ children }) => {
       value={{
         loading,
         governmentData,
+        privateData,
       }}
     >
       {children}

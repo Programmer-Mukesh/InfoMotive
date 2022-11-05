@@ -6,10 +6,11 @@ import { useRouter } from "next/router";
 import { PostContext } from "../context/PostContext";
 
 export default function Home() {
-  const { governmentData, loading } = useContext(PostContext);
+  const { governmentData, loading, privateData } = useContext(PostContext);
   const router = useRouter();
 
   const firstFiveGovPosts = governmentData.slice(0, 5);
+  const firstFivePvtPosts = privateData.slice(0, 5);
 
   const dummyData = [
     { id: 1, postName: "Amazon" },
@@ -48,7 +49,9 @@ export default function Home() {
               </Grid>
               <Grid item xs={12} sm={6} lg={3}>
                 <Paper elevation={3} className="homeCategoryBox">
-                  <span>All Private Jobs</span>
+                  <span onClick={() => router.push("/post/private/")}>
+                    All Private Jobs
+                  </span>
                 </Paper>
               </Grid>
               <Grid item xs={12} sm={6} lg={3}>
@@ -75,7 +78,7 @@ export default function Home() {
               <Grid item xs={12} sm={6} lg={3}>
                 <JobCards
                   title="Private Jobs"
-                  allPosts={dummyData}
+                  allPosts={firstFivePvtPosts}
                   btnRoute="/post/private"
                 />
               </Grid>

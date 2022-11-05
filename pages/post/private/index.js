@@ -2,9 +2,10 @@ import React, { useContext, useState } from "react";
 import { Container, Grid, Paper } from "@mui/material";
 import JobCards from "../../../components/JobCards";
 import Head from "next/head";
+import { PostContext } from "../../../context/PostContext";
 
 const index = () => {
-  //const { governmentData, loading } = useContext(PostContext);
+  const { privateData, loading } = useContext(PostContext);
   const dummyData = [
     { id: 1, postName: "Amazon" },
     { id: 2, postName: "Microsoft" },
@@ -20,21 +21,24 @@ const index = () => {
         <meta name="description" content="All Government Posts listing" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-
-      <>
-        <h2>All Private Job Postings are here</h2>
-        <div className="jobCardContainer">
-          <Grid container className="boxesWrapper">
-            <Grid item xs={12} sm={6}>
-              <JobCards
-                title="Private Jobs"
-                allPosts={dummyData}
-                btnRoute="/post/private"
-              />
+      {loading ? (
+        <h3>Loading...</h3>
+      ) : (
+        <>
+          <h2>All Private Job Postings are here</h2>
+          <div className="jobCardContainer">
+            <Grid container className="boxesWrapper">
+              <Grid item xs={12} sm={6}>
+                <JobCards
+                  title="Private Jobs"
+                  allPosts={privateData}
+                  btnRoute="/post/private"
+                />
+              </Grid>
             </Grid>
-          </Grid>
-        </div>
-      </>
+          </div>
+        </>
+      )}
     </Container>
   );
 };

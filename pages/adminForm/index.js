@@ -42,7 +42,7 @@ export default function Home() {
     if (response.ok) {
       alert("Data Posted Successfully");
     } else if (!response.ok) {
-      alert("Error occured Api status :" + response.status);
+      alert("Error occured status :" + response.status);
     }
   };
 
