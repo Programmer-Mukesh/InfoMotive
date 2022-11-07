@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useRouter } from "next/router";
 import Head from "next/head";
+import { Container } from "@mui/material";
 
 const PostsPage = () => {
   const [post, setPost] = useState({});
@@ -14,7 +15,7 @@ const PostsPage = () => {
   console.log("first", post);
 
   return (
-    <>
+    <Container className="single-post-wrapper">
       <Head>
         <title>{post.postName} </title>
         <meta name="description" content="Private Posts listing" />
@@ -24,7 +25,7 @@ const PostsPage = () => {
         <span className="col1">Name of the Post: </span>
         {post.postName}
       </h4>
-    </>
+    </Container>
   );
 };
 

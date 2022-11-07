@@ -3,6 +3,7 @@ import { Container, Grid, Paper } from "@mui/material";
 import JobCards from "../../../components/JobCards";
 import { PostContext } from "../../../context/PostContext";
 import Head from "next/head";
+import Loading from "../../../components/Loading";
 
 const index = () => {
   const { governmentData, loading } = useContext(PostContext);
@@ -16,10 +17,10 @@ const index = () => {
       </Head>
 
       {loading ? (
-        <h3>Loading...</h3>
+        <Loading />
       ) : (
         <>
-          <h2>All Government Job Postings are here</h2>
+          <h3 className="h3AllPosts">All Government Job Postings are here</h3>
           <div className="jobCardContainer">
             <Grid container className="boxesWrapper">
               <Grid item xs={12} sm={6}>

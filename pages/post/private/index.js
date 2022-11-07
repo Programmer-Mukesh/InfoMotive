@@ -3,6 +3,7 @@ import { Container, Grid, Paper } from "@mui/material";
 import JobCards from "../../../components/JobCards";
 import Head from "next/head";
 import { PostContext } from "../../../context/PostContext";
+import Loading from "../../../components/Loading";
 
 const index = () => {
   const { privateData, loading } = useContext(PostContext);
@@ -22,7 +23,7 @@ const index = () => {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       {loading ? (
-        <h3>Loading...</h3>
+        <Loading />
       ) : (
         <>
           <h2>All Private Job Postings are here</h2>

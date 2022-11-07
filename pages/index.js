@@ -4,6 +4,7 @@ import { useState, useContext } from "react";
 import JobCards from "../components/JobCards";
 import { useRouter } from "next/router";
 import { PostContext } from "../context/PostContext";
+import Loading from "../components/Loading";
 
 export default function Home() {
   const { governmentData, loading, privateData } = useContext(PostContext);
@@ -32,7 +33,7 @@ export default function Home() {
       </Head>
 
       {loading ? (
-        <h3>Loading.....</h3>
+        <Loading />
       ) : (
         <main className="main-home">
           <h3 className="heading">

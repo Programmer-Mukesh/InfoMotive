@@ -11,3 +11,11 @@
     margin-right: 5px;
   }
 }
+
+.h3AllPosts {
+  font-size: 24px;
+  margin-left: 10px;
+  @media (max-width: 767px) {
+    font-size: 18px;
+  }
+}
