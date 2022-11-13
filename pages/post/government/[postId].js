@@ -89,23 +89,23 @@ const PostsPage = () => {
               <td>
                 <p>
                   <span>General :</span>
-                  {post?.Fee.general} ₹
+                  {post?.Fee?.general} ₹
                 </p>
                 <p>
                   <span>OBC :</span>
-                  {post?.Fee.OBC} ₹
+                  {post?.Fee?.OBC} ₹
                 </p>
                 <p>
                   <span>SC :</span>
-                  {post?.Fee.SC} ₹
+                  {post?.Fee?.SC} ₹
                 </p>
                 <p>
                   <span>ST :</span>
-                  {post?.Fee.ST} ₹
+                  {post?.Fee?.ST} ₹
                 </p>
                 <p>
                   <span>Female :</span>
-                  {post?.Fee.female} ₹
+                  {post?.Fee?.female} ₹
                 </p>
               </td>
             </tr>

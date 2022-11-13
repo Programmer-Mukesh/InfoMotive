@@ -17,7 +17,7 @@ const PostsPage = () => {
   return (
     <Container className="single-post-wrapper">
       <Head>
-        <title>{post.postName} </title>
+        <title>{post?.postName} </title>
         <meta name="description" content="Private Posts listing" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
@@ -41,7 +41,7 @@ const PostsPage = () => {
             <td>
               <strong>Batch</strong>
             </td>
-            <td>{post.batch}</td>
+            <td>{post?.batch}</td>
           </tr>
 
           <tr>
