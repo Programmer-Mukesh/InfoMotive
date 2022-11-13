@@ -1,14 +1,47 @@
 .single-post-wrapper {
   max-width: 800px;
 
-  h4 {
-    font-size: 19px;
-    font-weight: 500;
+  .post-heading {
+    margin-top: 20px;
+    line-height: 40px;
+    @media (max-width: 767px) {
+      font-size: 22px;
+      line-height: normal;
+    }
   }
   .col1 {
     color: rgb(184, 7, 7);
     font-weight: 600;
     margin-right: 5px;
+  }
+  .post-descp {
+    color: rgb(83, 83, 83);
+  }
+  .table {
+    width: 100%;
+    text-align: left;
+    margin-bottom: 5px;
+    border: 1px solid #555;
+    border-collapse: collapse;
+    table-layout: fixed;
+    margin-top: 30px;
+    color: #444;
+    font-size: 17px;
+    max-width: 800px;
+  }
+  a {
+    overflow-wrap: break-word;
+    color: blue;
+    &hover {
+      text-decoration: underline;
+    }
+  }
+  .table tr td {
+    border: 1px solid #555;
+    padding: 5px;
+    p {
+      margin: 5px 0px;
+    }
   }
 }
 

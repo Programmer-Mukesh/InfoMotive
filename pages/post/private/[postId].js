@@ -21,10 +21,58 @@ const PostsPage = () => {
         <meta name="description" content="Private Posts listing" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <h4 style={{ marginTop: "20px" }}>
-        <span className="col1">Name of the Post: </span>
-        {post.postName}
-      </h4>
+      <h1 className="post-heading">{post?.dispHeading}</h1>
+
+      <p className="post-descp">{post?.shortInfo}</p>
+
+      <table class="table">
+        <tbody>
+          <tr>
+            <td>
+              <strong>Post Name</strong>
+            </td>
+            <td>
+              <a href="https://www.fresherslive.com/search-jobs/role/inspector-jobs">
+                {post?.postName}
+              </a>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <strong>Batch</strong>
+            </td>
+            <td>{post.batch}</td>
+          </tr>
+
+          <tr>
+            <td>
+              <strong>Location</strong>
+            </td>
+            <td>{post?.location}</td>
+          </tr>
+
+          <tr>
+            <td>
+              <strong>Total Posts</strong>
+            </td>
+            <td>{post?.totalPost}</td>
+          </tr>
+          <tr>
+            <td>
+              <strong> Apply link</strong>
+            </td>
+            <td>
+              <a href={post?.applyLink}>{post?.applyLink}</a>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <strong>CTC </strong>
+            </td>
+            <td>{post?.ctc}</td>
+          </tr>
+        </tbody>
+      </table>
     </Container>
   );
 };
