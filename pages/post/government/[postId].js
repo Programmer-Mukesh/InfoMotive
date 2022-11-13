@@ -80,7 +80,7 @@ const PostsPage = () => {
               <td>
                 <strong>Age</strong>
               </td>
-              <td>{post?.age.min}</td>
+              <td>{post?.age?.min}</td>
             </tr>
             <tr>
               <td>
