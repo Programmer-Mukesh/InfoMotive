@@ -12,8 +12,6 @@ const PostsPage = () => {
     setPost(JSON.parse(sessionStorage.getItem("currentPost")));
   }, []);
 
-  console.log("first", post);
-
   return (
     <Container className="single-post-wrapper">
       <Head>
@@ -51,12 +49,6 @@ const PostsPage = () => {
             <td>{post?.location}</td>
           </tr>
 
-          <tr>
-            <td>
-              <strong>Total Posts</strong>
-            </td>
-            <td>{post?.totalPost}</td>
-          </tr>
           <tr>
             <td>
               <strong> Apply link</strong>

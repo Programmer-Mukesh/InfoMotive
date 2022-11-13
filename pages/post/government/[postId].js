@@ -6,13 +6,10 @@ import Head from "next/head";
 const PostsPage = () => {
   const [post, setPost] = useState({});
   const router = useRouter();
-  const postId = router.query.postId;
 
   useEffect(() => {
     setPost(JSON.parse(sessionStorage.getItem("currentPost")));
   }, []);
-
-  console.log("first", post);
 
   return (
     <Container className="single-post-wrapper">
@@ -102,10 +99,12 @@ const PostsPage = () => {
                 <span>ST :</span>
                 {post?.Fee?.ST} ₹
               </p>
-              <p>
-                <span>Female :</span>
-                {post?.Fee?.female} ₹
-              </p>
+              {post?.Fee?.female && (
+                <p>
+                  <span>Female :</span>
+                  {post?.Fee?.female} ₹
+                </p>
+              )}
             </td>
           </tr>
         </tbody>
